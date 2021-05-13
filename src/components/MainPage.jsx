@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
-import axios from 'axios';
+import Articles from '../modules/Articles';
 import ArticleCard from './ArticleCard';
 import BreakingNews from './layout/BreakingNews';
 
-const Articles = () => {
+const GetArticles = () => {
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
   const fetchArticles = async () => {
     try {
-      const response = await axios.get('/articles/');
+      const response = await Articles.get()
       setArticles(response.data.articles);
       setErrorMessage('');
     } catch (error) {
@@ -46,4 +46,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default GetArticles;
