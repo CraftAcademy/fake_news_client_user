@@ -13,7 +13,7 @@ body {
 
 #fakenews {
   font-size: 4rem;
-  color: rgba(218, 217, 216, 0.863);
+  color: rgba(252, 251, 250, 1);
 }
 
 #question {
@@ -79,6 +79,10 @@ body {
   color: rgba(148, 148, 148, 0.863);
 }
 
+.breaking-news:hover {
+  transform: scale(1.01);
+}
+
 .card-container {
   background-color: #202325;
   max-width: 400px;
@@ -89,6 +93,10 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 5px;
+}
+
+.card-container:hover {
+  transform: scale(1.03);
 }
 
 .card-image {
@@ -143,4 +151,9 @@ body {
 
 .article-date {
   color: rgba(141, 141, 141, 0.863);
+}
+
+.category-header {
+  color: #fce42d;
+  text-align: center;
 }
