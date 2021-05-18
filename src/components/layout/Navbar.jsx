@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Segment, Tab } from 'semantic-ui-react';
 import store from '../../state/store/configureStore';
+import { useTranslation } from 'react-i18next'
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation()
   const panes = [
     {
       menuItem: 'Home',
@@ -22,8 +24,16 @@ const Navbar = () => {
         />
       </Segment>
       <Link data-cy='header' to='/'>
-        <div id='fakenews'>
-          FAKE<span id='question'>?</span>NEWS
+        <div id='fakenews' data-cy="app-title" dangerouslySetInnerHTML={{ __html: t('appTitle') }}>
+
+        </div>
+        <div data-cy="language-select">
+          <span
+            onClick={() => { i18n.changeLanguage('se') }}
+          >Swedish</span>
+          <span
+            onClick={() => { i18n.changeLanguage('en') }}
+          >English</span>
         </div>
       </Link>
     </>
