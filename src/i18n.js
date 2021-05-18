@@ -1,18 +1,11 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import se from './translations/se'
+import en from './translations/en'
 
 const resources = {
-  se: {
-    translation: {
-      'appTitle': "FALSKA<span id='question'>?</span>NYHETER"
-    }
-  },
-
-  en: {
-    translation: {
-      'appTitle': "FAKE<span id='question'>?</span>NEWS"
-    }
-  }
+  se: se,
+  en: en
 }
 
 i18n

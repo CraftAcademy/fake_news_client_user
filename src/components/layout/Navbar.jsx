@@ -30,10 +30,10 @@ const Navbar = () => {
         <div data-cy="language-select">
           <span
             onClick={() => { i18n.changeLanguage('se') }}
-          >Swedish</span>
+          >{t('languageNames.swedish')}</span>
           <span
             onClick={() => { i18n.changeLanguage('en') }}
-          >English</span>
+          >{t('languageNames.english')}</span>
         </div>
       </Link>
     </>
