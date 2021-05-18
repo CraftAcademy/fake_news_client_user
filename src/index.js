@@ -8,6 +8,7 @@ import './style.css';
 import { Provider } from 'react-redux';
 import store from './state/store/configureStore';
 import { BrowserRouter as Router } from 'react-router-dom';
+import './i18n'
 
 axios.defaults.baseURL = 'https://fakest-newzz.herokuapp.com/api';
 
