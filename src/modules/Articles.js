@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '../state/store/configureStore';
+import errorHandler from './ErrorHandler'
 
 const Articles = {
   async index(category) {
@@ -54,21 +55,3 @@ export const setRating = (rating) => {
   }
 }
 
-const errorHandler = (error) => {
-  if (error.response.status === 500) {
-    store.dispatch({
-      type: 'ERROR_MESSAGE',
-      payload: 'Servers are currently not responding, Please try again later',
-    });
-  } else if (error.response.status === 404) {
-    store.dispatch({
-      type: 'ERROR_MESSAGE',
-      payload: error.response.data.error_message,
-    });
-  } else {
-    store.dispatch({
-      type: 'ERROR_MESSAGE',
-      payload: error.message,
-    });
-  }
-};
