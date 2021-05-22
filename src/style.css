@@ -39,7 +39,7 @@ input {
 }
 
 #category-container {
-  margin: 50px 300px 50px;
+  margin: 50px 10%;
 }
 
 #articles-container {
@@ -221,4 +221,12 @@ input {
 
 .hover:hover {
   transform: scale(1.03);
+}
+
+.background-hover {
+  transition: 0.3s;
+}
+
+.background-hover:hover {
+  transform: translateY(-10px);
 }

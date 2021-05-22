@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import CategoryMenu from './layout/CategoryMenu';
 import CustomDivider from './CustomDivider';
 import PremiumSection from './PremiumSection';
+import ArticleRow from './ArticleRow';
 
 const MainPage = () => {
   const { articles } = useSelector((state) => state);
@@ -18,6 +19,10 @@ const MainPage = () => {
     return <ArticleCard article={article} index={index} key={index} />;
   });
 
+  let articleRows = articles.slice(1).map((article, index) => {
+    return <ArticleRow article={article} index={index} key={index} />;
+  });
+
   return (
     <>
       <CategoryMenu />
@@ -28,6 +33,8 @@ const MainPage = () => {
       </div>
       <CustomDivider title='Premium Articles' />
       <PremiumSection />
+      <CustomDivider title='Other News' />
+      <div id='category-container'>{articleRows}</div>
     </>
   );
 };
