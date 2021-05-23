@@ -18,29 +18,33 @@ const ArticleRow = ({ article }) => {
           ? { pathname: '/registration', state: { redirected: true } }
           : `/articles/${article.id}`
       }>
-      {article.premium && (
-        <Label data-cy='premium-label' style={styles.label}>
-          <Icon name='star' color='yellow' /> Premium
-        </Label>
-      )}
-      <img style={styles.image} src={article.image} alt={article.title} />
-      <div style={styles.contentContainer}>
-        <h1 data-cy='title'>{article.title}</h1>
-        <p className='card-teaser' data-cy='teaser'>
-          {article.teaser}
-        </p>
-        <div>
-          <Rating
-            data-cy='rating'
-            defaultRating={setRating(article.rating)}
-            maxRating={5}
-            disabled
-            icon='star'
-            size='tiny'
-          />
-          <p className='card-date' data-cy='created-at'>
-            {article.date}
+      <div>
+        {article.premium && (
+          <Label data-cy='premium-label' style={styles.label}>
+            <Icon name='star' color='black' /> Premium
+          </Label>
+        )}
+      </div>
+      <div style={{ display: 'flex' }}>
+        <img style={styles.image} src={article.image} alt={article.title} />
+        <div style={styles.contentContainer}>
+          <h1 data-cy='title'>{article.title}</h1>
+          <p className='card-teaser' data-cy='teaser'>
+            {article.teaser}
           </p>
+          <div>
+            <Rating
+              data-cy='rating'
+              defaultRating={setRating(article.rating)}
+              maxRating={5}
+              disabled
+              icon='star'
+              size='tiny'
+            />
+            <p className='card-date' data-cy='created-at'>
+              {article.date}
+            </p>
+          </div>
         </div>
       </div>
     </Link>
@@ -53,6 +57,7 @@ const styles = {
   container: {
     display: 'flex',
     marginBottom: 50,
+    flexDirection: 'column',
   },
   image: {
     height: 240,
@@ -64,8 +69,8 @@ const styles = {
     padding: 25,
   },
   label: {
-    backgroundColor: '#333',
-    color: 'white',
+    backgroundColor: '#ffb74d',
+    color: 'black',
     position: 'relative',
     top: 0,
     zIndex: 2000,
