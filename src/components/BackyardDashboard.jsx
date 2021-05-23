@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Button, Table, Segment } from 'semantic-ui-react';
 import BackyardArticles from '../modules/BackyardArticles';
+import BackyardForm from './BackyardForm';
 
 const BackyardDashboard = () => {
-  const { backyardArticles } = useSelector((state) => state);
+  const { backyardArticles, subscriber } = useSelector((state) => state);
 
   const getArticlesBasedOnPosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -41,7 +42,7 @@ const BackyardDashboard = () => {
       <Table.Cell>
         <Link
           data-cy='view-backyard-article-btn'
-          to={`/backyard/${backyardArticle.id}`}>
+          to={`/backyards/${backyardArticle.id}`}>
           <Button>View</Button>
         </Link>
       </Table.Cell>
@@ -58,6 +59,7 @@ const BackyardDashboard = () => {
                 ? `Backyard Conspiracies from ${backyardArticles[0].location}`
                 : 'Allow your location!'}
             </h2>
+            {(subscriber && backyardArticles[0]) && <BackyardForm location={backyardArticles[0].location} />}
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>
