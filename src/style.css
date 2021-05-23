@@ -55,6 +55,10 @@ input {
   padding: 0 10% 20px;
 }
 
+#new-backyard-input {
+  color: black !important;
+}
+
 .italic {
   font-style: italic;
 }
