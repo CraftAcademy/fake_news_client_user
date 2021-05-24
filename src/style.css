@@ -56,7 +56,7 @@ input {
 }
 
 #new-backyard-input {
-  color: black !important;
+  background-color: #6e6e6e !important;
 }
 
 .italic {
@@ -274,6 +274,24 @@ input {
 .subscription-button {
   background-color: tomato;
 }
+
+.backyard-form {
+  background-color: #3f3f3f !important;
+  color: white !important;
+  text-align: center;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+textarea {
+  background-color: #6e6e6e !important;
+  color: white !important;
+}
+
+.ui.form .field > label {
+  color: lightgrey !important;
+}
+
 .backyard-container {
   color: white;
   margin: 20px 30%;
