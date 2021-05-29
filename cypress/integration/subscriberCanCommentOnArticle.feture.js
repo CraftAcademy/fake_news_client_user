@@ -12,9 +12,13 @@ describe('Subscriber can comment on article', () => {
 
   describe('Successfully', () => {
     beforeEach(() => {
-      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/articles/3/comments', {
-        statusCode: 200,
-      });
+      cy.intercept(
+        'POST',
+        'https://fakest-newzz.herokuapp.com/api/articles/3/comments',
+        {
+          statusCode: 200,
+        }
+      );
       cy.window().its('store').invoke('dispatch', {
         type: 'AUTHENTICATE',
         payload: 'Welcome back Bob!',
@@ -26,10 +30,17 @@ describe('Subscriber can comment on article', () => {
       cy.get('[data-cy=clear-btn]').click();
       cy.get('[data-cy=comment-input]').type('STFU U BLOODY ROUND EARTHER');
       cy.get('[data-cy=comment-btn]').click();
-      cy.get('[data-cy=popup-message]').should(
-        'contain',
-        'Your comment has been published'
-      );
+    });
+
+    describe('Unsuccessful to send empty message', () => {
+      it('Writes an empty message', () => {
+        cy.get('[data-cy=comment-input]').type('  ');
+        cy.get('[data-cy=comment-btn]').click();
+        cy.get('[data-cy=message]').should(
+          'contain',
+          "Comment field can't be empty"
+        );
+      });
     });
   });
 
