@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Articles from '../../modules/Articles';
 import { useSelector } from 'react-redux';
 
@@ -8,11 +8,10 @@ const CommentInput = () => {
   const [message, setMessage] = useState('');
   const [focus, setFocus] = useState(false);
 
-  const submitComment = (event) => {
-    event.preventDefault();
+  const submitComment = () => {
     if (subscriber) {
       const comments = {
-        body: event.target.body.value,
+        body: input,
       };
       Articles.createComment(comments, article.id);
       setInput('');
@@ -23,13 +22,19 @@ const CommentInput = () => {
     }
   };
 
+  const handler = (event) => {
+    if (event.key === 'Enter') {
+      submitComment();
+    }
+  };
+
   return (
     <div className='comment-outer-container'>
       <div className='comment-inner-container'>
         <h2 className='sign-up-message' data-cy='message'>
           {message}
         </h2>
-        <form onSubmit={(event) => submitComment(event)}>
+        <form>
           <textarea
             className='comment-textarea'
             data-cy='comment-input'
@@ -40,10 +45,12 @@ const CommentInput = () => {
             required
             onFocus={() => setFocus(true)}
             onChange={(event) => setInput(event.target.value)}
+            onKeyPress={handler}
           />
           {focus ? (
             <div className='comment-button-container'>
               <button
+                onClick={() => submitComment()}
                 className='submit-btn '
                 data-cy='comment-btn'
                 name='comment'
